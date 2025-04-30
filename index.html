@@ -1,22 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-+0n0xVW2eSR5zGkUbsf9b3N1+y6vZ9ENKJHj3MjzYbDWxPk6Ib1OtKkOX7C5i5XZUO0Vxw8fIKMXjEo5eG5Y9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Instagram Feed with Bootstrap</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Feed</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/072e5df971.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <!--NavBar-->
-    <nav class="nav navbar-light bg-light mb-4">
-        <div class="container-fliud">
-            <img src="<i class="fa-brands fa-square-instagram"></i>">
-            <span class="navbar-brand mb-0 h1">Instagram</span>
-            <div>
-                <button class="btn btn-">Create a new post</button>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-light bg-light px-4 py-3 shadow-sm mb-0">
+    <div class="container-fluid">
+      <!-- Logo + Nombre -->
+      <div class="d-flex align-items-center">
+        <i class="fa-brands fa-instagram fs-4 me-2"></i>
+        <span class="navbar-brand mb-0 h1">Instagram</span>
+      </div>
+
+      <!-- Boton Create + Dropdown -->
+      <div class="d-flex align-items-center gap-2">
+        <!--El gap solo funciona para los elementos hijos-->
+        <!-- Boton de Crear post -->
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newpost">Create a new post</button>
+        <!-- Dropdown Configuracion -->
+        <div class="dropdown">
+          <button class="btn btn-light border dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="#">Accessibility</a></li>
+            <li><a class="dropdown-item" href="#">Privacy and Data</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MODAL PARA NUEVO POST -->
+  <div class="modal fade" id="newpost" tabindex="-1" aria-labelledby="newpostLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="newpostLabel">Create a new post</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <label for="caption" class="form-label">Caption:</label>
+          <textarea class="form-control mb-3" id="caption" placeholder="Add the caption of your post here"></textarea>
+          <button class="btn btn-outline-dark me-2"><i class="fa-solid fa-camera"></i></button>
+          <button class="btn btn-outline-dark"><i class="fa-solid fa-location-dot"></i></button>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success">Publish</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--BODY-->
+  <!--Iconos para establecer la forma de ver las fotos-->
+  <div class="d-flex align-items-center justify-content-center mt-0">
+    <button class="btn viewSingleTable" type="button" id="view-list">
+        <i class="fa-solid fa-square"></i>
+    </button>
+    <button class="btn viewSingleTable" type="button" id="view-grid">
+        <i class="fa-solid fa-table-cells"></i>
+    </button>
+  </div>
+  
+  <!--el feed-->
+   <div class="container mt-3">
+    <div class="row justify-content-center" id="post-container">
+
+      <div class="col-12 col-md-4 post">
+        <div class="card mx-auto" style="max-width: 45%">
+          <div class="card-header bg-white d-flex justify-content-between align-items-center py-3">
+            <h5 class="mb-0 fw-bold">username</h5>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+            <div class="row justify-content-md-center">
+                <img src="istockphoto-1925581892-1024x1024.jpg" class="w-100 object-fit-cover">
+                <div>
+                  <span class="card-text fs-5 fw-bold mx-2">Likes 305</span>
+                  <p class="card-text pb-3 mx-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et cumque eos dolorum dignissimos!</p>
+                </div>
             </div>
         </div>
-    </nav>
+      </div>
+
+      <div class="col-12 col-md-4 post">
+        <div class="card">
+          <div class="container-fluid mb-3 mt-2">
+            <div class="row justify-content-md-center">
+              <div class="card px-0" style="width: 45%">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">akulwdnawkjldbawlkdb</h5>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </div>
+                <img src="istockphoto-2081744258-1024x1024.jpg" class="px-0 object-fit-cover">
+                <span class="card-text fs-5 fw-bold">Likes 305</span>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et cumque eos dolorum dignissimos!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 post">
+        <div class="card">
+          <div class="container-fluid mb-3 mt-2">
+            <div class="row justify-content-md-center">
+              <div class="card px-0" style="width: 45%">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">akulwdnawkjldbawlkdb</h5>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </div>
+                <img src="istockphoto-2111768130-1024x1024.jpg" class="px-0 object-fit-cover">
+                <span class="card-text fs-5 fw-bold">Likes 305</span>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et cumque eos dolorum dignissimos!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 post">
+        <div class="card">
+          <div class="container-fluid mb-3 mt-2">
+            <div class="row justify-content-md-center">
+              <div class="card px-0" style="width: 45%">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">akulwdnawkjldbawlkdb</h5>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </div>
+                <img src="istockphoto-2158177425-1024x1024.jpg" class="px-0 object-fit-cover">
+                <span class="card-text fs-5 fw-bold">Likes 305</span>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et cumque eos dolorum dignissimos!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 post">
+        <div class="card">
+          <div class="container-fluid mb-3 mt-2">
+            <div class="row justify-content-md-center">
+              <div class="card px-0" style="width: 45%">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">akulwdnawkjldbawlkdb</h5>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </div>
+                <img src="istockphoto-2168943074-1024x1024.jpg" class="px-0 object-fit-cover">
+                <span class="card-text fs-5 fw-bold">Likes 305</span>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et cumque eos dolorum dignissimos!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-4 post">
+        <div class="card">
+          <div class="container-fluid mb-3 mt-2">
+            <div class="row justify-content-md-center">
+              <div class="card px-0" style="width: 45%">
+                <div class="card-body">
+                  <div class="d-flex justify-content-between">
+                    <h5 class="card-title">akulwdnawkjldbawlkdb</h5>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </div>
+                </div>
+                <img src="istockphoto-2193366126-1024x1024.jpg" class="px-0 object-fit-cover">
+                <span class="card-text fs-5 fw-bold">Likes 305</span>
+                <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et cumque eos dolorum dignissimos!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+   </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
