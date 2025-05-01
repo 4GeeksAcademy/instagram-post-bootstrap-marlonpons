@@ -17,11 +17,19 @@ buttonsView.forEach(button=>{
 const btnList = document.getElementById("view-list");
 const btnGrid = document.getElementById("view-grid");
 const posts = document.querySelectorAll('.post');
+const postTexts = document.querySelectorAll('.card-text');
+const postHeader= document.querySelectorAll('.card-header');
 
 btnList.addEventListener('click', ()=>{
     posts.forEach(e => {
         e.classList.remove("col-md-4");
         e.classList.add("col-12")
+    });
+    postTexts.forEach(text => {
+        text.classList.remove("d-none");
+    });
+    postHeader.forEach(header=>{
+        header.classList.remove("d-none");
     });
 })
 
@@ -29,5 +37,11 @@ btnGrid.addEventListener('click',()=>{
     posts.forEach(e=>{
         e.classList.remove("col-12");
         e.classList.add("col-md-4");
+    });
+    postTexts.forEach(text => {
+        text.classList.add("d-none");
+    });
+    postHeader.forEach(header=>{
+        header.classList.add("d-none");
     });
 })
